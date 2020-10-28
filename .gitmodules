@@ -1,0 +1,3 @@
+[submodule "opus_codec"]
+	path = opus_codec
+	url = https://github.com/xiph/opus.git
