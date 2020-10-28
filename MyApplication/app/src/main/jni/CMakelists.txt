@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 3.1)
+
+# Point to the submodule where opus main dir is
+set (OPUS_ROOT ${CMAKE_SOURCE_DIR}/../../../../../opus_codec)
+
+set (LIBOPUS_PATH ${OPUS_ROOT}/build/android/${ANDROID_ABI})
+set (OPUS_INCLUDE ${OPUS_ROOT}/include/)
+
+# create the libjopus.so
+add_library(jopus
+        SHARED
+        jopus.cpp)
+
+# import the libopus.a
+add_library(LIBOPUS STATIC IMPORTED)
+set_target_properties(LIBOPUS PROPERTIES IMPORTED_LOCATION
+        ${LIBOPUS_PATH}/libopus.a)
+
+# for the opus includes
+target_include_directories(jopus PUBLIC ${OPUS_INCLUDE})
+
+
+set (TEMP "-fno-exceptions  -fno-rtti -ffunction-sections -fdata-sections")
+set_target_properties (jopus PROPERTIES COMPILE_FLAGS  ${TEMP})
+if (${ANDROID_ABI} STREQUAL "x86")
+    set_target_properties(jopus PROPERTIES LINK_FLAGS -Wl,--no-warn-shared-textrel )
+endif()
+
+#link jopus with the opus-codec imported lib
+target_link_libraries( jopus LIBOPUS)
