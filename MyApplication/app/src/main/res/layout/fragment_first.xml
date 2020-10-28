@@ -1,28 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".FirstFragment">
+
 
     <TextView
         android:id="@+id/textview_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_first_fragment"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/hello_first_fragment" />
 
     <Button
         android:id="@+id/button_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/next"
-        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <Switch
+        android:id="@+id/permission_ok_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Can record audio"
+        />
+
+    <TextView
+        android:id="@+id/permission_msg_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Clear permission by going to android settings -> apps "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/record_first"
+        android:text="Record"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/recorded_raw_size_text_first"
+        android:text="Have 0 bytes of recorded data"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/encode_raw_button_first"
+        android:text="Encode"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Encoding: Idle"
+        android:id="@+id/encode_text_button_first"/>
+</LinearLayout>
